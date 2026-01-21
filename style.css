@@ -1,0 +1,107 @@
+/* CSS Variables */
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #000;
+    --card-bg: #fff;
+    --sidebar-bg: #2c3e50;
+    --header-bg: #3498db;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #fff;
+    --card-bg: #2a2a2a;
+    --sidebar-bg: #111;
+    --header-bg: #222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Grid Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    grid-area: sidebar;
+    background: var(--sidebar-bg);
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar li {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    background: var(--header-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Main */
+.main {
+    grid-area: main;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Button */
+button {
+    padding: 8px 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main";
+    }
+    .sidebar {
+        display: none;
+    }
+}
